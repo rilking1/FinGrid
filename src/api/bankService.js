@@ -11,13 +11,19 @@ export const bankService = {
     );
     return data;
   },
-  // Нові методи:
   getAccounts: async () => {
     const { data } = await apiClient.get("/Bank/accounts");
     return data;
   },
   getTransactions: async () => {
     const { data } = await apiClient.get("/Bank/transactions-all");
+    return data;
+  },
+
+  toggleInclusion: async (id) => {
+    const { data } = await apiClient.post(
+      `/Budget/accounts/${id}/toggle-inclusion`,
+    );
     return data;
   },
 };
